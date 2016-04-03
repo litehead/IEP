@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6b74de199814f4c9ad514757a878610" Name="Diagram1">
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.ChooseCorrectQuestion" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.ChooseCorrectVariant" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.Lecture" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.LiteratureItem" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.Module" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.StudentAnswer" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.StudentExamination" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.StudentLectureReading" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.StudentModuleReading" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.Student" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.StudentSubjectReading" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.Subject" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.Teacher" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.Test" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.TestsRelation" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.User" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IEP.BusinessLogic.Entities.UserSubject" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_ChooseCorrectQuestions_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_ChooseCorrectVariants_ChooseCorrectQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentAnswers_ChooseCorrectQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentAnswers_ChooseCorrectVariants" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_Lectures_Modules" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentLectureReadings_Lectures" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_TestsRelations_Lectures" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_Modules_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentModuleReadings_Modules" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_TestsRelations_Modules" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentAnswers_StudentExaminations" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentExaminations_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentExaminations_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentLectureReadings_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentModuleReadings_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_Students_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentSubjectReadings_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_StudentSubjectReadings_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_UserSubjects_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_Teachers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_TestsRelations_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="IEP.BusinessLogic.Entities.FK_UserSubjects_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

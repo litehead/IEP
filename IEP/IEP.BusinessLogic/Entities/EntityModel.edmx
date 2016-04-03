@@ -1,0 +1,1268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IEP.BusinessLogic.Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChooseCorrectQuestions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChooseCorrectVariants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsCorrect" Type="bit" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lectures">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LiteratureItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentAnswers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ExaminationId" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="AnswerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentExaminations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="Mark" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentLectureReadings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="LectureId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentModuleReadings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentSubjectReadings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestsRelations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="LectureId" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSubjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ChooseCorrectQuestions_Tests">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+          <End Role="ChooseCorrectQuestions" Type="Self.ChooseCorrectQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChooseCorrectQuestions">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChooseCorrectVariants_ChooseCorrectQuestions">
+          <End Role="ChooseCorrectQuestions" Type="Self.ChooseCorrectQuestions" Multiplicity="1" />
+          <End Role="ChooseCorrectVariants" Type="Self.ChooseCorrectVariants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChooseCorrectQuestions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChooseCorrectVariants">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lectures_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
+          <End Role="Lectures" Type="Self.Lectures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lectures">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Subjects">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Modules" Type="Self.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswers_ChooseCorrectQuestions">
+          <End Role="ChooseCorrectQuestions" Type="Self.ChooseCorrectQuestions" Multiplicity="1" />
+          <End Role="StudentAnswers" Type="Self.StudentAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChooseCorrectQuestions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswers">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswers_ChooseCorrectVariants">
+          <End Role="ChooseCorrectVariants" Type="Self.ChooseCorrectVariants" Multiplicity="1" />
+          <End Role="StudentAnswers" Type="Self.StudentAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChooseCorrectVariants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswers">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswers_StudentExaminations">
+          <End Role="StudentExaminations" Type="Self.StudentExaminations" Multiplicity="1" />
+          <End Role="StudentAnswers" Type="Self.StudentAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentExaminations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswers">
+              <PropertyRef Name="ExaminationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExaminations_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentExaminations" Type="Self.StudentExaminations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentExaminations">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExaminations_Tests">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+          <End Role="StudentExaminations" Type="Self.StudentExaminations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentExaminations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLectureReadings_Lectures">
+          <End Role="Lectures" Type="Self.Lectures" Multiplicity="1" />
+          <End Role="StudentLectureReadings" Type="Self.StudentLectureReadings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lectures">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentLectureReadings">
+              <PropertyRef Name="LectureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLectureReadings_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentLectureReadings" Type="Self.StudentLectureReadings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentLectureReadings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentModuleReadings_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
+          <End Role="StudentModuleReadings" Type="Self.StudentModuleReadings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentModuleReadings">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentModuleReadings_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentModuleReadings" Type="Self.StudentModuleReadings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentModuleReadings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSubjectReadings_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentSubjectReadings" Type="Self.StudentSubjectReadings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSubjectReadings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSubjectReadings_Subjects">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="StudentSubjectReadings" Type="Self.StudentSubjectReadings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSubjectReadings">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teachers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsRelations_Lectures">
+          <End Role="Lectures" Type="Self.Lectures" Multiplicity="0..1" />
+          <End Role="TestsRelations" Type="Self.TestsRelations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lectures">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestsRelations">
+              <PropertyRef Name="LectureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsRelations_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
+          <End Role="TestsRelations" Type="Self.TestsRelations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestsRelations">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsRelations_Tests">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+          <End Role="TestsRelations" Type="Self.TestsRelations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestsRelations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubjects_Subjects">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="UserSubjects" Type="Self.UserSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSubjects">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubjects_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSubjects" Type="Self.UserSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSubjects">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IEPBusinessLogicEntitiesStoreContainer">
+          <EntitySet Name="ChooseCorrectQuestions" EntityType="Self.ChooseCorrectQuestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChooseCorrectVariants" EntityType="Self.ChooseCorrectVariants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lectures" EntityType="Self.Lectures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LiteratureItems" EntityType="Self.LiteratureItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAnswers" EntityType="Self.StudentAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentExaminations" EntityType="Self.StudentExaminations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentLectureReadings" EntityType="Self.StudentLectureReadings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentModuleReadings" EntityType="Self.StudentModuleReadings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSubjectReadings" EntityType="Self.StudentSubjectReadings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestsRelations" EntityType="Self.TestsRelations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSubjects" EntityType="Self.UserSubjects" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ChooseCorrectQuestions_Tests" Association="Self.FK_ChooseCorrectQuestions_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="ChooseCorrectQuestions" EntitySet="ChooseCorrectQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChooseCorrectVariants_ChooseCorrectQuestions" Association="Self.FK_ChooseCorrectVariants_ChooseCorrectQuestions">
+            <End Role="ChooseCorrectQuestions" EntitySet="ChooseCorrectQuestions" />
+            <End Role="ChooseCorrectVariants" EntitySet="ChooseCorrectVariants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lectures_Modules" Association="Self.FK_Lectures_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Lectures" EntitySet="Lectures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Subjects" Association="Self.FK_Modules_Subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswers_ChooseCorrectQuestions" Association="Self.FK_StudentAnswers_ChooseCorrectQuestions">
+            <End Role="ChooseCorrectQuestions" EntitySet="ChooseCorrectQuestions" />
+            <End Role="StudentAnswers" EntitySet="StudentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswers_ChooseCorrectVariants" Association="Self.FK_StudentAnswers_ChooseCorrectVariants">
+            <End Role="ChooseCorrectVariants" EntitySet="ChooseCorrectVariants" />
+            <End Role="StudentAnswers" EntitySet="StudentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswers_StudentExaminations" Association="Self.FK_StudentAnswers_StudentExaminations">
+            <End Role="StudentExaminations" EntitySet="StudentExaminations" />
+            <End Role="StudentAnswers" EntitySet="StudentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExaminations_Students" Association="Self.FK_StudentExaminations_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentExaminations" EntitySet="StudentExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExaminations_Tests" Association="Self.FK_StudentExaminations_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="StudentExaminations" EntitySet="StudentExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLectureReadings_Lectures" Association="Self.FK_StudentLectureReadings_Lectures">
+            <End Role="Lectures" EntitySet="Lectures" />
+            <End Role="StudentLectureReadings" EntitySet="StudentLectureReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLectureReadings_Students" Association="Self.FK_StudentLectureReadings_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentLectureReadings" EntitySet="StudentLectureReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentModuleReadings_Modules" Association="Self.FK_StudentModuleReadings_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="StudentModuleReadings" EntitySet="StudentModuleReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentModuleReadings_Students" Association="Self.FK_StudentModuleReadings_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentModuleReadings" EntitySet="StudentModuleReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSubjectReadings_Students" Association="Self.FK_StudentSubjectReadings_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentSubjectReadings" EntitySet="StudentSubjectReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSubjectReadings_Subjects" Association="Self.FK_StudentSubjectReadings_Subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="StudentSubjectReadings" EntitySet="StudentSubjectReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Users" Association="Self.FK_Teachers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsRelations_Lectures" Association="Self.FK_TestsRelations_Lectures">
+            <End Role="Lectures" EntitySet="Lectures" />
+            <End Role="TestsRelations" EntitySet="TestsRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsRelations_Modules" Association="Self.FK_TestsRelations_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="TestsRelations" EntitySet="TestsRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsRelations_Tests" Association="Self.FK_TestsRelations_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="TestsRelations" EntitySet="TestsRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubjects_Subjects" Association="Self.FK_UserSubjects_Subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="UserSubjects" EntitySet="UserSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubjects_Users" Association="Self.FK_UserSubjects_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSubjects" EntitySet="UserSubjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IEP.BusinessLogic.Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChooseCorrectQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_ChooseCorrectQuestions_Tests" FromRole="ChooseCorrectQuestions" ToRole="Tests" />
+          <NavigationProperty Name="ChooseCorrectVariants" Relationship="Self.FK_ChooseCorrectVariants_ChooseCorrectQuestions" FromRole="ChooseCorrectQuestions" ToRole="ChooseCorrectVariants" />
+          <NavigationProperty Name="StudentAnswers" Relationship="Self.FK_StudentAnswers_ChooseCorrectQuestions" FromRole="ChooseCorrectQuestions" ToRole="StudentAnswers" />
+        </EntityType>
+        <EntityType Name="ChooseCorrectVariant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsCorrect" Type="Boolean" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChooseCorrectQuestion" Relationship="Self.FK_ChooseCorrectVariants_ChooseCorrectQuestions" FromRole="ChooseCorrectVariants" ToRole="ChooseCorrectQuestions" />
+          <NavigationProperty Name="StudentAnswers" Relationship="Self.FK_StudentAnswers_ChooseCorrectVariants" FromRole="ChooseCorrectVariants" ToRole="StudentAnswers" />
+        </EntityType>
+        <EntityType Name="Lecture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_Lectures_Modules" FromRole="Lectures" ToRole="Modules" />
+          <NavigationProperty Name="StudentLectureReadings" Relationship="Self.FK_StudentLectureReadings_Lectures" FromRole="Lectures" ToRole="StudentLectureReadings" />
+          <NavigationProperty Name="TestsRelations" Relationship="Self.FK_TestsRelations_Lectures" FromRole="Lectures" ToRole="TestsRelations" />
+        </EntityType>
+        <EntityType Name="LiteratureItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Lectures" Relationship="Self.FK_Lectures_Modules" FromRole="Modules" ToRole="Lectures" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Modules_Subjects" FromRole="Modules" ToRole="Subjects" />
+          <NavigationProperty Name="StudentModuleReadings" Relationship="Self.FK_StudentModuleReadings_Modules" FromRole="Modules" ToRole="StudentModuleReadings" />
+          <NavigationProperty Name="TestsRelations" Relationship="Self.FK_TestsRelations_Modules" FromRole="Modules" ToRole="TestsRelations" />
+        </EntityType>
+        <EntityType Name="StudentAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ExaminationId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="AnswerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChooseCorrectQuestion" Relationship="Self.FK_StudentAnswers_ChooseCorrectQuestions" FromRole="StudentAnswers" ToRole="ChooseCorrectQuestions" />
+          <NavigationProperty Name="ChooseCorrectVariant" Relationship="Self.FK_StudentAnswers_ChooseCorrectVariants" FromRole="StudentAnswers" ToRole="ChooseCorrectVariants" />
+          <NavigationProperty Name="StudentExamination" Relationship="Self.FK_StudentAnswers_StudentExaminations" FromRole="StudentAnswers" ToRole="StudentExaminations" />
+        </EntityType>
+        <EntityType Name="StudentExamination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="StudentAnswers" Relationship="Self.FK_StudentAnswers_StudentExaminations" FromRole="StudentExaminations" ToRole="StudentAnswers" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentExaminations_Students" FromRole="StudentExaminations" ToRole="Students" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_StudentExaminations_Tests" FromRole="StudentExaminations" ToRole="Tests" />
+        </EntityType>
+        <EntityType Name="StudentLectureReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="LectureId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lecture" Relationship="Self.FK_StudentLectureReadings_Lectures" FromRole="StudentLectureReadings" ToRole="Lectures" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentLectureReadings_Students" FromRole="StudentLectureReadings" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="StudentModuleReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_StudentModuleReadings_Modules" FromRole="StudentModuleReadings" ToRole="Modules" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentModuleReadings_Students" FromRole="StudentModuleReadings" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StudentExaminations" Relationship="Self.FK_StudentExaminations_Students" FromRole="Students" ToRole="StudentExaminations" />
+          <NavigationProperty Name="StudentLectureReadings" Relationship="Self.FK_StudentLectureReadings_Students" FromRole="Students" ToRole="StudentLectureReadings" />
+          <NavigationProperty Name="StudentModuleReadings" Relationship="Self.FK_StudentModuleReadings_Students" FromRole="Students" ToRole="StudentModuleReadings" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Students_Users" FromRole="Students" ToRole="Users" />
+          <NavigationProperty Name="StudentSubjectReadings" Relationship="Self.FK_StudentSubjectReadings_Students" FromRole="Students" ToRole="StudentSubjectReadings" />
+        </EntityType>
+        <EntityType Name="StudentSubjectReading">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentSubjectReadings_Students" FromRole="StudentSubjectReadings" ToRole="Students" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_StudentSubjectReadings_Subjects" FromRole="StudentSubjectReadings" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_Modules_Subjects" FromRole="Subjects" ToRole="Modules" />
+          <NavigationProperty Name="StudentSubjectReadings" Relationship="Self.FK_StudentSubjectReadings_Subjects" FromRole="Subjects" ToRole="StudentSubjectReadings" />
+          <NavigationProperty Name="UserSubjects" Relationship="Self.FK_UserSubjects_Subjects" FromRole="Subjects" ToRole="UserSubjects" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Teachers_Users" FromRole="Teachers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChooseCorrectQuestions" Relationship="Self.FK_ChooseCorrectQuestions_Tests" FromRole="Tests" ToRole="ChooseCorrectQuestions" />
+          <NavigationProperty Name="StudentExaminations" Relationship="Self.FK_StudentExaminations_Tests" FromRole="Tests" ToRole="StudentExaminations" />
+          <NavigationProperty Name="TestsRelations" Relationship="Self.FK_TestsRelations_Tests" FromRole="Tests" ToRole="TestsRelations" />
+        </EntityType>
+        <EntityType Name="TestsRelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="LectureId" Type="Int32" />
+          <NavigationProperty Name="Lecture" Relationship="Self.FK_TestsRelations_Lectures" FromRole="TestsRelations" ToRole="Lectures" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_TestsRelations_Modules" FromRole="TestsRelations" ToRole="Modules" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_TestsRelations_Tests" FromRole="TestsRelations" ToRole="Tests" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Users" FromRole="Users" ToRole="Students" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Users" FromRole="Users" ToRole="Teachers" />
+          <NavigationProperty Name="UserSubjects" Relationship="Self.FK_UserSubjects_Users" FromRole="Users" ToRole="UserSubjects" />
+        </EntityType>
+        <EntityType Name="UserSubject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_UserSubjects_Subjects" FromRole="UserSubjects" ToRole="Subjects" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserSubjects_Users" FromRole="UserSubjects" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_ChooseCorrectQuestions_Tests">
+          <End Role="Tests" Type="Self.Test" Multiplicity="1" />
+          <End Role="ChooseCorrectQuestions" Type="Self.ChooseCorrectQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChooseCorrectQuestions">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChooseCorrectVariants_ChooseCorrectQuestions">
+          <End Role="ChooseCorrectQuestions" Type="Self.ChooseCorrectQuestion" Multiplicity="1" />
+          <End Role="ChooseCorrectVariants" Type="Self.ChooseCorrectVariant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChooseCorrectQuestions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChooseCorrectVariants">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswers_ChooseCorrectQuestions">
+          <End Role="ChooseCorrectQuestions" Type="Self.ChooseCorrectQuestion" Multiplicity="1" />
+          <End Role="StudentAnswers" Type="Self.StudentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChooseCorrectQuestions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswers">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswers_ChooseCorrectVariants">
+          <End Role="ChooseCorrectVariants" Type="Self.ChooseCorrectVariant" Multiplicity="1" />
+          <End Role="StudentAnswers" Type="Self.StudentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChooseCorrectVariants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswers">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lectures_Modules">
+          <End Role="Modules" Type="Self.Module" Multiplicity="1" />
+          <End Role="Lectures" Type="Self.Lecture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lectures">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLectureReadings_Lectures">
+          <End Role="Lectures" Type="Self.Lecture" Multiplicity="1" />
+          <End Role="StudentLectureReadings" Type="Self.StudentLectureReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lectures">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentLectureReadings">
+              <PropertyRef Name="LectureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsRelations_Lectures">
+          <End Role="Lectures" Type="Self.Lecture" Multiplicity="0..1" />
+          <End Role="TestsRelations" Type="Self.TestsRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lectures">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestsRelations">
+              <PropertyRef Name="LectureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Subjects">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Modules" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentModuleReadings_Modules">
+          <End Role="Modules" Type="Self.Module" Multiplicity="1" />
+          <End Role="StudentModuleReadings" Type="Self.StudentModuleReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentModuleReadings">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsRelations_Modules">
+          <End Role="Modules" Type="Self.Module" Multiplicity="1" />
+          <End Role="TestsRelations" Type="Self.TestsRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestsRelations">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswers_StudentExaminations">
+          <End Role="StudentExaminations" Type="Self.StudentExamination" Multiplicity="1" />
+          <End Role="StudentAnswers" Type="Self.StudentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentExaminations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAnswers">
+              <PropertyRef Name="ExaminationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExaminations_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentExaminations" Type="Self.StudentExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentExaminations">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExaminations_Tests">
+          <End Role="Tests" Type="Self.Test" Multiplicity="1" />
+          <End Role="StudentExaminations" Type="Self.StudentExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentExaminations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentLectureReadings_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentLectureReadings" Type="Self.StudentLectureReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentLectureReadings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentModuleReadings_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentModuleReadings" Type="Self.StudentModuleReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentModuleReadings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSubjectReadings_Students">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentSubjectReadings" Type="Self.StudentSubjectReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSubjectReadings">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSubjectReadings_Subjects">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="StudentSubjectReadings" Type="Self.StudentSubjectReading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentSubjectReadings">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubjects_Subjects">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="UserSubjects" Type="Self.UserSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSubjects">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teachers_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsRelations_Tests">
+          <End Role="Tests" Type="Self.Test" Multiplicity="1" />
+          <End Role="TestsRelations" Type="Self.TestsRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestsRelations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubjects_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSubjects" Type="Self.UserSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSubjects">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntityModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChooseCorrectQuestions" EntityType="Self.ChooseCorrectQuestion" />
+          <EntitySet Name="ChooseCorrectVariants" EntityType="Self.ChooseCorrectVariant" />
+          <EntitySet Name="Lectures" EntityType="Self.Lecture" />
+          <EntitySet Name="LiteratureItems" EntityType="Self.LiteratureItem" />
+          <EntitySet Name="Modules" EntityType="Self.Module" />
+          <EntitySet Name="StudentAnswers" EntityType="Self.StudentAnswer" />
+          <EntitySet Name="StudentExaminations" EntityType="Self.StudentExamination" />
+          <EntitySet Name="StudentLectureReadings" EntityType="Self.StudentLectureReading" />
+          <EntitySet Name="StudentModuleReadings" EntityType="Self.StudentModuleReading" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="StudentSubjectReadings" EntityType="Self.StudentSubjectReading" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="TestsRelations" EntityType="Self.TestsRelation" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserSubjects" EntityType="Self.UserSubject" />
+          <AssociationSet Name="FK_ChooseCorrectQuestions_Tests" Association="Self.FK_ChooseCorrectQuestions_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="ChooseCorrectQuestions" EntitySet="ChooseCorrectQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChooseCorrectVariants_ChooseCorrectQuestions" Association="Self.FK_ChooseCorrectVariants_ChooseCorrectQuestions">
+            <End Role="ChooseCorrectQuestions" EntitySet="ChooseCorrectQuestions" />
+            <End Role="ChooseCorrectVariants" EntitySet="ChooseCorrectVariants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswers_ChooseCorrectQuestions" Association="Self.FK_StudentAnswers_ChooseCorrectQuestions">
+            <End Role="ChooseCorrectQuestions" EntitySet="ChooseCorrectQuestions" />
+            <End Role="StudentAnswers" EntitySet="StudentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswers_ChooseCorrectVariants" Association="Self.FK_StudentAnswers_ChooseCorrectVariants">
+            <End Role="ChooseCorrectVariants" EntitySet="ChooseCorrectVariants" />
+            <End Role="StudentAnswers" EntitySet="StudentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lectures_Modules" Association="Self.FK_Lectures_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Lectures" EntitySet="Lectures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLectureReadings_Lectures" Association="Self.FK_StudentLectureReadings_Lectures">
+            <End Role="Lectures" EntitySet="Lectures" />
+            <End Role="StudentLectureReadings" EntitySet="StudentLectureReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsRelations_Lectures" Association="Self.FK_TestsRelations_Lectures">
+            <End Role="Lectures" EntitySet="Lectures" />
+            <End Role="TestsRelations" EntitySet="TestsRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Subjects" Association="Self.FK_Modules_Subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentModuleReadings_Modules" Association="Self.FK_StudentModuleReadings_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="StudentModuleReadings" EntitySet="StudentModuleReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsRelations_Modules" Association="Self.FK_TestsRelations_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="TestsRelations" EntitySet="TestsRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswers_StudentExaminations" Association="Self.FK_StudentAnswers_StudentExaminations">
+            <End Role="StudentExaminations" EntitySet="StudentExaminations" />
+            <End Role="StudentAnswers" EntitySet="StudentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExaminations_Students" Association="Self.FK_StudentExaminations_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentExaminations" EntitySet="StudentExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExaminations_Tests" Association="Self.FK_StudentExaminations_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="StudentExaminations" EntitySet="StudentExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentLectureReadings_Students" Association="Self.FK_StudentLectureReadings_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentLectureReadings" EntitySet="StudentLectureReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentModuleReadings_Students" Association="Self.FK_StudentModuleReadings_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentModuleReadings" EntitySet="StudentModuleReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Users" Association="Self.FK_Students_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSubjectReadings_Students" Association="Self.FK_StudentSubjectReadings_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentSubjectReadings" EntitySet="StudentSubjectReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSubjectReadings_Subjects" Association="Self.FK_StudentSubjectReadings_Subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="StudentSubjectReadings" EntitySet="StudentSubjectReadings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubjects_Subjects" Association="Self.FK_UserSubjects_Subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="UserSubjects" EntitySet="UserSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teachers_Users" Association="Self.FK_Teachers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsRelations_Tests" Association="Self.FK_TestsRelations_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="TestsRelations" EntitySet="TestsRelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubjects_Users" Association="Self.FK_UserSubjects_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSubjects" EntitySet="UserSubjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IEPBusinessLogicEntitiesStoreContainer" CdmEntityContainer="EntityModel">
+          <EntitySetMapping Name="ChooseCorrectQuestions">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.ChooseCorrectQuestion">
+              <MappingFragment StoreEntitySet="ChooseCorrectQuestions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChooseCorrectVariants">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.ChooseCorrectVariant">
+              <MappingFragment StoreEntitySet="ChooseCorrectVariants">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lectures">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.Lecture">
+              <MappingFragment StoreEntitySet="Lectures">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LiteratureItems">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.LiteratureItem">
+              <MappingFragment StoreEntitySet="LiteratureItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.Module">
+              <MappingFragment StoreEntitySet="Modules">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAnswers">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.StudentAnswer">
+              <MappingFragment StoreEntitySet="StudentAnswers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentExaminations">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.StudentExamination">
+              <MappingFragment StoreEntitySet="StudentExaminations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentLectureReadings">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.StudentLectureReading">
+              <MappingFragment StoreEntitySet="StudentLectureReadings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="LectureId" ColumnName="LectureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentModuleReadings">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.StudentModuleReading">
+              <MappingFragment StoreEntitySet="StudentModuleReadings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSubjectReadings">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.StudentSubjectReading">
+              <MappingFragment StoreEntitySet="StudentSubjectReadings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.Test">
+              <MappingFragment StoreEntitySet="Tests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestsRelations">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.TestsRelation">
+              <MappingFragment StoreEntitySet="TestsRelations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="LectureId" ColumnName="LectureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSubjects">
+            <EntityTypeMapping TypeName="IEP.BusinessLogic.Entities.UserSubject">
+              <MappingFragment StoreEntitySet="UserSubjects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

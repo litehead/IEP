@@ -49,9 +49,8 @@ namespace IEP.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Логин")]
+        public string Login { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +63,14 @@ namespace IEP.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Логин")]
+        public string Login { get; set; }
+
+        [Required]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Адрес электронной почты")]
