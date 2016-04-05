@@ -39,12 +39,12 @@ namespace IEP.Services.ApplicationServices
             return sBuilder.ToString();
         }
 
-        public Task<bool> Authorize(User user)
+        public async Task<bool> Authorize(User user)
         {
             using (var hashAlgorithm = MD5.Create())
             {
                 var passwordHash = GetHash(hashAlgorithm, user.Password);
-                return _userRepository.GetAll(x => x.Login == user.Login && x.Password == passwordHash).AnyAsync();
+                return await _userRepository.GetAll(x => x.Login == user.Login && x.Password == passwordHash).AnyAsync();
             }
         }
 

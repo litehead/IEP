@@ -46,7 +46,12 @@ namespace IEP.Controllers
 
             var user = TinyMapper.Map<User>(model);
 
-            var success = await _userService.Authorize(user);
+            bool success;
+
+            using (_unitOfWork)
+            {
+                 success = await _userService.Authorize(user);
+            }
 
             if (success)
             {
@@ -198,11 +203,11 @@ namespace IEP.Controllers
         {
             if (disposing)
             {
-                if (_unitOfWork != null)
-                {
-                    _unitOfWork.Dispose();
-                    _unitOfWork = null;
-                }
+                //if (_unitOfWork != null)
+                //{
+                //    _unitOfWork.Dispose();
+                //    _unitOfWork = null;
+                //}
                 //if (_userManager != null)
                 //{
                 //    _userManager.Dispose();
