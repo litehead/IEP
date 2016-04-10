@@ -2,6 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using IEP.App_Start;
+using IEP.Services.Contracts;
 
 namespace IEP
 {
@@ -14,6 +15,13 @@ namespace IEP
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             TinyMapperConfig.RegisterMappings();
+        }
+
+        protected void Application_PostAuthenticateRequest()
+        {
+            var service = DependencyResolver.Current.GetService<IAuthService>();
+
+            service.AcceptCookies(Request);
         }
     }
 }

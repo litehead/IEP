@@ -36,9 +36,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationServices\UserService.cs" />
+    <Compile Include="Auth\ApplicationIdentity.cs" />
+    <Compile Include="Auth\ApplicationPrincipal.cs" />
+    <Compile Include="Auth\AuthenticationService.cs" />
+    <Compile Include="Contracts\IAuthService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 using IEP.BusinessLogic.Repositories;
 using IEP.Services.ApplicationServices;
+using IEP.Services.Auth;
 using IEP.Services.Contracts;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IEP.App_Start.NinjectWebCommon), "Start")]
@@ -67,9 +68,10 @@ namespace IEP.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InSingletonScope();
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof (IRepository<>)).To(typeof (BaseRepository<>));
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IAuthService>().To<AuthenticationService>().InRequestScope().OnActivation(service => service.HttpContext = HttpContext.Current);
         }        
     }
 }

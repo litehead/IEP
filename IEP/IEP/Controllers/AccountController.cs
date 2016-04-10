@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using IEP.BusinessLogic.Contracts;
 using IEP.BusinessLogic.Entities;
 using Microsoft.AspNet.Identity;
@@ -12,9 +14,9 @@ using Nelibur.ObjectMapper;
 namespace IEP.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IUserService _userService;
 
         public AccountController(IUnitOfWork unitOfWork, IUserService userService)
@@ -46,15 +48,12 @@ namespace IEP.Controllers
 
             var user = TinyMapper.Map<User>(model);
 
-            bool success;
-
-            using (_unitOfWork)
-            {
-                 success = await _userService.Authorize(user);
-            }
+            var success = await _userService.Authorize(user);
 
             if (success)
             {
+                AuthenticationService.RegisterCookies(user);
+
                 return RedirectToLocal(returnUrl);
             }
 

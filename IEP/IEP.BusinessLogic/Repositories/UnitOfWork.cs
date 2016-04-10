@@ -6,21 +6,7 @@ namespace IEP.BusinessLogic.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private EntityModel _context;
-
-        public EntityModel Context
-        {
-            get
-            {
-                if (_disposedValue)
-                {
-                    _context = new EntityModel();
-                    _disposedValue = false;
-                }
-                return _context;
-            }
-            set { _context = value; }
-        }
+        public EntityModel Context { get; }
 
         public UnitOfWork()
         {
@@ -46,7 +32,7 @@ namespace IEP.BusinessLogic.Repositories
             {
                 if (disposing)
                 {
-                    _context?.Dispose();
+                    Context?.Dispose();
 
                     // TODO: dispose managed state (managed objects).
                 }
