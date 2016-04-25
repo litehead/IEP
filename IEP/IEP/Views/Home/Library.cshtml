@@ -1,0 +1,10 @@
+﻿@model IEnumerable<IEP.BusinessLogic.Entities.LiteratureItem>
+
+@if (!Model.Any())
+{
+    <p>Литература ещё не добавлена</p>
+}
+@foreach (var item in Model)
+{
+    <a href="@item.Path">@item.Title</a>
+}

@@ -39,6 +39,8 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ILiteratureService.cs" />
+    <Compile Include="ApplicationServices\LiteratureService.cs" />
     <Compile Include="ApplicationServices\UserService.cs" />
     <Compile Include="Auth\ApplicationIdentity.cs" />
     <Compile Include="Auth\ApplicationPrincipal.cs" />

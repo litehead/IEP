@@ -71,6 +71,7 @@ namespace IEP.App_Start
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof (IRepository<>)).To(typeof (BaseRepository<>));
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<ILiteratureService>().To<LiteratureService>();
             kernel.Bind<IAuthService>().To<AuthenticationService>().InRequestScope().OnActivation(service => service.HttpContext = HttpContext.Current);
         }        
     }

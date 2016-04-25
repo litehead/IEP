@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using IEP.BusinessLogic.Contracts;
 using IEP.BusinessLogic.Entities;
 using Microsoft.AspNet.Identity;
