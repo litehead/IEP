@@ -22,9 +22,9 @@
             </div>
             <div class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Библиотека", "Library", "Home")</li>
-                    <li>@Html.ActionLink("О нас", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Библиотека", "Library", "Home", new { area = "" }, new { })</li>
+                    <li>@Html.ActionLink("О нас", "About", "Home", new { area = "" }, new { })</li>
+                    <li>@Html.ActionLink("Контакты", "Contact", "Home", new { area = "" }, new { })</li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>

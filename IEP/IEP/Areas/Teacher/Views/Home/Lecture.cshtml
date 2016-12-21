@@ -1,0 +1,17 @@
+﻿@model IEP.Areas.Teacher.Models.LectureViewModel
+
+@Scripts.Render("~/bundles/tinyMCE")
+
+@using (Html.BeginForm("SaveLecture", "Home", FormMethod.Post))
+{
+    @Html.TextAreaFor(x => x.Content)
+}
+
+@section scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea#Content',
+            theme: "modern"
+        });
+    </script>
+}

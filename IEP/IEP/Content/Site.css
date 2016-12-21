@@ -42,3 +42,8 @@ textarea {
 .container-fluid.body-content {
     height: 100%;
 }
+
+.chapter-text-content
+{
+    margin-top: 1em;
+}

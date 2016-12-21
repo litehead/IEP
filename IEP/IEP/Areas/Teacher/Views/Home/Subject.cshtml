@@ -1,0 +1,46 @@
+﻿@model IEP.Areas.Teacher.Models.SubjectViewModel
+
+@{ 
+    Func<List<IEP.Areas.Teacher.Models.ModuleViewModel>, string> processModel = (modules) =>
+    {
+        return Newtonsoft.Json.JsonConvert.SerializeObject(modules.Select(x => new
+        {
+            text = x.Title,
+            nodes = x.Lectures.Select(l => new { text = l.Title, lectureId = l.Id })
+        }));
+    };
+}
+
+<p>
+    @Html.ActionLink("Добавить модуль", "AddModule", new { subjectId = Model.Id })
+</p>
+
+<p>
+    @Html.ActionLink("Добавить лекцию", "AddLecture", new { subjectId = Model.Id })
+</p>
+
+@if (Model.Modules.Any())
+{
+    <div id="tree"></div>
+
+    @section scripts {
+    <script>
+        $(function () {
+            var data = @Html.Raw(processModel(Model.Modules));
+            data.forEach(function(elem)
+            {
+                elem.nodes.forEach(function(row) {
+                    row.text += '@Html.Raw(HttpUtility.HtmlDecode("<div class=\"pull-right\">" + Html.ActionLink("<span class=\"glyphicon glyphicon-th-list\"></span>", "GetLecture").ToHtmlString() + "</div>"))';
+                });
+            });
+            $('#tree').treeview({
+                data: data
+                });
+        });
+    </script>
+    }
+}
+else
+{
+    <p>No modules defined</p>
+}

@@ -39,12 +39,12 @@ namespace IEP.Services.ApplicationServices
             return sBuilder.ToString();
         }
 
-        public async Task<bool> Authorize(User user)
+        public async Task<User> Authorize(User user)
         {
             using (var hashAlgorithm = MD5.Create())
             {
                 var passwordHash = GetHash(hashAlgorithm, user.Password);
-                return await _userRepository.GetAll(x => x.Login == user.Login && x.Password == passwordHash).AnyAsync();
+                return await _userRepository.GetAll(x => x.Login == user.Login && x.Password == passwordHash).FirstOrDefaultAsync();
             }
         }
 
@@ -55,6 +55,11 @@ namespace IEP.Services.ApplicationServices
                 user.Password = GetHash(hashAlgorithm, user.Password);
             }
             _userRepository.Add(user);
+        }
+
+        public async Task<User> GetByName(string name)
+        {
+            return await _userRepository.GetAll(x => x.Login == name).FirstAsync();
         }
     }
 }

@@ -5,8 +5,10 @@ namespace IEP.Services.Contracts
 {
     public interface IUserService
     {
-        Task<bool> Authorize(User user);
+        Task<User> Authorize(User user);
 
         void Create(User user);
+
+        Task<User> GetByName(string name);
     }
 }

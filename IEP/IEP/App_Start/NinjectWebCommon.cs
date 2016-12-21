@@ -73,6 +73,7 @@ namespace IEP.App_Start
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<ILiteratureService>().To<LiteratureService>();
             kernel.Bind<IAuthService>().To<AuthenticationService>().InRequestScope().OnActivation(service => service.HttpContext = HttpContext.Current);
+            kernel.Bind<ISubjectsService>().To<SubjectService>();
         }        
     }
 }

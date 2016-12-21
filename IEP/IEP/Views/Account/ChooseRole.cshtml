@@ -1,0 +1,19 @@
+﻿@using Roles = IEP.BusinessLogic.Enums.Roles
+
+<div class="row">
+    <a class="col-md-3 box" href="@Url.Action("Register", new {Role = Roles.Student})">Student</a>
+    <a class="col-md-3 box" href="@Url.Action("Register", new {Role = Roles.Teacher})">Teacher</a>
+</div>
+
+<style>
+    .box {
+        display: block;
+        width: 10em;
+        height: 10em;
+        line-height: 10em;
+        font-size: 24pt;
+        text-align: center;
+        background-color: #CCC;
+        margin: 10px;
+    }
+</style>

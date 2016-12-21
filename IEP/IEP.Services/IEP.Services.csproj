@@ -39,6 +39,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\SubjectService.cs" />
     <Compile Include="Contracts\ILiteratureService.cs" />
     <Compile Include="ApplicationServices\LiteratureService.cs" />
     <Compile Include="ApplicationServices\UserService.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="Auth\ApplicationPrincipal.cs" />
     <Compile Include="Auth\AuthenticationService.cs" />
     <Compile Include="Contracts\IAuthService.cs" />
+    <Compile Include="Contracts\ISubjectsService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

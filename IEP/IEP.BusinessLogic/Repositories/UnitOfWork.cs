@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using IEP.BusinessLogic.Contracts;
 using IEP.BusinessLogic.Entities;
+using System.Data.Entity.Validation;
+using System;
 
 namespace IEP.BusinessLogic.Repositories
 {
@@ -20,7 +22,24 @@ namespace IEP.BusinessLogic.Repositories
 
         public Task CommitAsync()
         {
-            return Context.SaveChangesAsync();
+            try
+            {
+                return Context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
 
         #region IDisposable Support

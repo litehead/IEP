@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using IEP.BusinessLogic.Enums;
 
 namespace IEP.Models
 {
@@ -86,6 +87,8 @@ namespace IEP.Models
         [Display(Name = "Подтверждение пароля")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
+
+        public Roles Role { get; set; }
     }
 
     public class ResetPasswordViewModel

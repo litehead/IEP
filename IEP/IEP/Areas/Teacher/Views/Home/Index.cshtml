@@ -1,0 +1,25 @@
+﻿@model IEP.Areas.Teacher.Models.TeacherViewModel
+
+<div class="jumbotron">
+    <h1>Hello, @User.Identity.Name</h1>
+    <p class="lead">Let's see what you can do know</p>
+</div>
+
+<div>
+    Предметы
+    <div class="pull-right">
+        @Html.ActionLink("Добавить предмет", "AddSubject")
+    </div>
+</div>
+
+@if (Model.Subjects.Any())
+{
+    foreach (var subject in Model.Subjects)
+    {
+        @Html.ActionLink(subject.Name, "GetSubject", new { subjectId = subject.Id })
+    }
+}
+else
+{
+    <p>No subjects registered</p>
+}

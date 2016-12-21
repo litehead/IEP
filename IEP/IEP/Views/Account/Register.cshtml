@@ -17,6 +17,7 @@
             @Html.TextBoxFor(m => m.Login, new {@class = "form-control"})
         </div>
     </div>
+    @Html.HiddenFor(m => m.Role)
     <div class="form-group">
         @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">

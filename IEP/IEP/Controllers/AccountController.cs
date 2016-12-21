@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using IEP.BusinessLogic.Contracts;
 using IEP.BusinessLogic.Entities;
+using IEP.BusinessLogic.Enums;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using IEP.Models;
@@ -46,11 +47,16 @@ namespace IEP.Controllers
 
             var user = TinyMapper.Map<User>(model);
 
-            var success = await _userService.Authorize(user);
+            user = await _userService.Authorize(user);
 
-            if (success)
+            if (user != null)
             {
                 AuthenticationService.RegisterCookies(user);
+
+                if (user.Role == (int) Roles.Teacher)
+                {
+                    return RedirectToAction("Index", "Home", new { area = "Teacher" });
+                }
 
                 return RedirectToLocal(returnUrl);
             }
@@ -59,12 +65,18 @@ namespace IEP.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        public ActionResult ChooseRole()
+        {
+            return View();
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(Roles role)
         {
-            return View();
+            return View(new RegisterViewModel {Role = role});
         }
 
         //
@@ -77,8 +89,17 @@ namespace IEP.Controllers
             if (ModelState.IsValid)
             {
                 var user = TinyMapper.Map<User>(model);
+                if (user.Role == (int) Roles.Teacher)
+                {
+                    user.Teachers.Add(new Teacher());
+                }
                 _userService.Create(user);
                 await _unitOfWork.CommitAsync();
+                if (user.Role == (int) Roles.Teacher)
+                {
+                    AuthenticationService.RegisterCookies(user);
+                    return RedirectToRoute("Teacher_default", new {area = "Teacher", controller = "Home", action = "Index"});
+                }
                 return RedirectToAction("Index", "Home");
                 //var result = await UserManager.CreateAsync(user, model.Password);
                 //if (result.Succeeded)
